@@ -32,14 +32,14 @@ Go to the Redis dir:
 $ ./redis-server --port 12346
 ```   
 
-Under apps/ , we implemented two applications for ClusterOn. If you want the datalet backend to be a key-value store, type:
+Under apps/ , we implemented two applications for Voltron. If you want the datalet backend to be a key-value store, type:
 ```
 $ cd apps/ckv
 $ ./conkv -l 192.168.0.170 -p 11111 -t 1 
 ```   
-### ClusterOn ###
+### Voltron ###
 
-To run the ClusterOn executable, go to the conproxy dir:  
+To run the Voltron executable, go to the conproxy dir:  
 ```
 $ ./conproxy --config /root/conrun/conf/c1.json --datalets /root/conrun/conf/d1.cfg --shard shard1 --proxyAddr 192.168.0.170 --proxyClientPort 12345 
 ```
@@ -49,7 +49,7 @@ A JSON formatted file specifying all options (num_replicas option might be a bit
 ```
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -89,19 +89,19 @@ This will send requests to conproxy, which will serve as a proxy forwarding requ
 
 ### Deployment ###
 
-To launch zk and kafak on cloud, go to the kafka dir, and run:
+To launch zk and kafak on cloud, go to the MQ dir, and run:
 ```
 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
-bin/kafka-server-start.sh -daemon config/server.properties
+bin/MQ-server-start.sh -daemon config/server.properties
 ```
 
-To launch a cluster of clusteron + conkv nodes, first add the data node info in slap.sh, then run:  
+To launch a cluster of Voltron + conkv nodes, first add the data node info in slap.sh, then run:  
 ```
 $ cd scripts  
 $ ./slap.sh runckv  
 $ ./slap.sh runcon
 ```
-Docker based ClusterOn is ==PARTIALLY== supported. To run containerized deployment:  
+Docker based Voltron is ==PARTIALLY== supported. To run containerized deployment:  
 ```
 $ ./slap.sh docker_runckv
 $ ./slap.sh docker_runcon
@@ -114,7 +114,7 @@ $ ./slap.sh docker_runcon
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -124,7 +124,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "slave",
@@ -137,7 +137,7 @@ Slave:
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "eventual",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -147,7 +147,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "evenual",
 	"consistency_tech": "cr",
 	"topology": "slave",
@@ -160,7 +160,7 @@ Slave:
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "ms",
@@ -170,7 +170,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "slave",
@@ -180,7 +180,7 @@ Slave:
 -----No topology and without consistency-----
 {
 	"zk_host": "172.17.0.2:2181",
-	"kafka_broker": "172.17.0.3:9092",
+	"MQ_broker": "172.17.0.3:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "no",
@@ -192,7 +192,7 @@ Slave:
 
 {
 	"zk_host": "172.17.0.2:2181",
-	"kafka_broker": "172.17.0.3:9092",
+	"MQ_broker": "172.17.0.3:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "rl",
 	"topology": "aa",
@@ -204,7 +204,7 @@ Slave:
 
 {
 	"zk_host": "192.168.0.173:2181",
-	"kafka_broker": "192.168.0.173:9092",
+	"MQ_broker": "192.168.0.173:9092",
 	"consistency_model": "eventual",
 	"consistency_tech": "cr",
 	"topology": "aa",
