@@ -18,26 +18,29 @@
 
 ## How to compile? ##
 
+### Compile Voltron ###
+
+Go to the src directory:
+```
+cd src
+```
 For debugging mode, run 'make'
 
 To enable compiler level optimization, run 'make opti'
 
-## How to run? ##
 
-### Datalet backend ###
+### Compile datalet application ###
 
-First, you should have a backend datalet running, e.g., a Redis node:  
-Go to the Redis dir:  
+Go to the apps directory:
 ```
-$ ./redis-server --port 12346
-```   
-
-Under apps/ , we implemented two applications for Voltron. If you want the datalet backend to be a key-value store, type:
+cd apps/iHT
 ```
-$ cd apps/ckv
-$ ./conkv -l 192.168.0.170 -p 11111 -t 1 
-```   
-### Client Lib ###
+For debugging mode, run 'make'
+
+To enable compiler level optimization, run 'make opti'
+
+
+### Compile client lib ###
 
 To compile client lib, go to the libckv dir and compile proto file:
 ```
@@ -58,6 +61,23 @@ cmake ..
 make
 ```
 libckv.a will be available in build directory
+
+
+## How to run? ##
+
+### Datalet backend ###
+
+First, you should have a backend datalet running, e.g., a Redis node:  
+Go to the Redis dir:  
+```
+$ ./redis-server --port 12346
+```   
+
+Under apps/ , we implemented two applications for Voltron. If you want the datalet backend to be a key-value store, type:
+```
+$ cd apps/ckv
+$ ./conkv -l 192.168.0.170 -p 11111 -t 1 
+```   
 
 ### Voltron ###
 
