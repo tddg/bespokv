@@ -54,7 +54,7 @@ make
 ```
 libckv.a will be available in build directory
 
-### Compile client lib ###
+### Compile benchmark ###
 
 First, compile the client lib as shown in previous step.
 
