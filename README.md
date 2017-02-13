@@ -54,6 +54,12 @@ make
 ```
 libckv.a will be available in build directory
 
+### Compile client lib ###
+
+First, compile the client lib as shown in previous step.
+
+Then go to the bench directory and run 'make'
+
 
 ## How to run? ##
 
