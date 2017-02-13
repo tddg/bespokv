@@ -20,22 +20,14 @@
 
 ### Compile Voltron ###
 
-Go to the src directory:
-```
-cd src
-```
-For debugging mode, run 'make'
+Go to the src directory, for debugging mode, run 'make'
 
 To enable compiler level optimization, run 'make opti'
 
 
 ### Compile datalet application ###
 
-Go to the apps directory:
-```
-cd apps/iHT
-```
-For debugging mode, run 'make'
+Go to the apps directory, for debugging mode, run 'make'
 
 To enable compiler level optimization, run 'make opti'
 
