@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+
+# ctags
+rm -f tags
+
+find . \( -name '*.[cC]' -o -name '*.[hH]' -o -name '*.l' -o -name '*.y'    \
+        -o -name '*.[sS]' -o -name '*.cc' -o -name '*.cpp' -o -name '*.cu' \) \
+		-print | ctags - 2>/dev/null
+
+ctags -R --langmap=c++:+.cu *		
+
+# cscope
+rm -f cscope.files cscope.out
+
+find . \( -name '*.c' -o -name '*.cpp' -o -name '*.cc' -o -name '*.cu'		\
+		-o -name '*.h' -o -name '*.cuh'      \
+        -o -name '*.s' -o -name '*.S' \) -print > cscope.files
+
+cscope -i cscope.files

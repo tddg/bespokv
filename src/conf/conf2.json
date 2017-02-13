@@ -1,0 +1,10 @@
+
+{
+	"datalet_list": "conf/datalet_list2.cfg",
+	"zk_host": "localhost:2181",
+	"kafka_broker": "172.17.0.3:9092",
+	"consistency_model": "strong",
+	"consistency_tech": "cr",
+	"topology": "ms",
+	"num_replicas": "2",
+}

@@ -1,0 +1,10 @@
+
+{
+	"datalet_list": "slave3.cfg",
+	"zk_host": "localhost:2181",
+	"kafka_broker": "172.17.0.3:9092",
+	"consistency_model": "without",
+	"consistency_tech": "cr",
+	"topology": "no",
+	"num_replicas": "1",
+}

@@ -1,0 +1,36 @@
+syntax = "proto2";
+package protoSpec;
+
+message GetMessage {
+	required string key = 1;
+}
+
+message PutMessage {
+	required string key = 1;
+	required string value = 2;
+}
+
+message DelMessage {
+	required string key = 1;
+}
+
+message Request {
+	enum Operation {
+		GET = 1;
+		PUT = 2;
+		DEL = 3;
+	}
+	required Operation op = 1;
+	optional GetMessage get = 2;
+	optional PutMessage put = 3;
+	optional DelMessage del = 4;
+}
+
+message Reply {
+	//  0 = OK / stored
+	// -1 = not_found
+	// -2 = retry
+	// -3 = failed
+	required int32 status = 1;
+	optional string value = 2;
+}

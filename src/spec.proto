@@ -1,0 +1,7 @@
+syntax = "proto2";
+package spec;
+
+message Message {  
+	required string key = 1;
+	required string val = 2;
+}  

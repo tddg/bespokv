@@ -1,0 +1,64 @@
+index 0d36b9b..bc6725e 100644
+--- a/iLog.cpp
++++ b/iLog.cpp
+@@ -31,8 +31,9 @@
+
+#define ITEMS_PER_ALLOC 64
+
++#define USE_MT
+//#define USE_STL_MAP
+-#define USE_LOG
++//#define USE_LOG
+
+#ifdef USE_LOG
+struct iLog {
+@@ -65,6 +66,8 @@ static item **hashtable = 0;
+// yue: second field is the offset position of that particular object
+std::unordered_map<std::string, struct stored> *hashmap;
+struct iLog *db;
++#elif defined(USE_MT)
+	+masstree_t *mtree;
+#endif
+
+	//static Link *conn;
+	@@ -108,8 +111,10 @@ static void settings_init(void) {
+		*/
+			static void db_init(unsigned int hashtable_init) {
+
+				-       masstree_t *tree = masstree_create(NULL);
+				-#ifdef USE_STL_MAP
+					+
+					+#ifdef USE_MT
+					+       mtree = masstree_create(NULL);
+				+#elif defined(USE_STL_MAP)
+					hashmap = new std::unordered_map<std::string, std::string>();
+				CHECK(hashmap != NULL);
+#elif defined(USE_MC_HT)
+				@@ -415,6 +420,14 @@ static void handle_request(Link *c) {
+				} else {
+					reply.set_status(-1);
+				}
+				+#elif defined(USE_MT)
+					+               char *value = masstree_get(mtree, key.c_str(), key.size());
+				+               if (value == NULL)
+					+                       reply.set_status(-1);
+				+               else {
+					+                       reply.set_status(0);
+					+                 reply.set_value(std::string(value));
+					+               }
+#elif defined(USE_LOG)
+					if (hashmap->find(key) != hashmap->end()) {
+						struct stored stored = hashmap->at(key);
+						@@ -446,6 +459,11 @@ static void handle_request(Link *c) {
+							hashmap->insert(std::make_pair(req.mutable_put()->key(), req.mutable_put()->value()));
+						}
+						reply.set_status(0);
+						+#elif defined(USE_MT)
+							+               std::string val = req.mutable_put()->value();
+						+               std::string key = req.mutable_put()->key();
+						+               bool statusr = masstree_put(mtree, key.c_str(), key.size(), val.c_str());
+						+               reply.set_status(statusr);
+#elif defined(USE_LOG)
+						auto item = hashmap->find(req.mutable_put()->key());
+						if (item != hashmap->end()) { // yue: if kv pair exists
+

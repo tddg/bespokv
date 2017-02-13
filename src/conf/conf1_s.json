@@ -1,0 +1,9 @@
+
+{
+	"zk_host": "192.168.0.170:2181",
+	"kafka_broker": "192.168.0.170:9092",
+	"consistency_model": "strong",
+	"consistency_tech": "cr",
+	"topology": "slave",
+	"num_replicas": "0",
+}
