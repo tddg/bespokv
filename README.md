@@ -37,9 +37,31 @@ Under apps/ , we implemented two applications for Voltron. If you want the datal
 $ cd apps/ckv
 $ ./conkv -l 192.168.0.170 -p 11111 -t 1 
 ```   
+### Client Lib ###
+
+To compile client lib, go to the libckv dir and compile proto file:
+```
+cd apps/clibs/libckv
+protoc --cpp_out=. ckv_proto.proto
+```
+
+Move the header file generated to the include folder:
+```
+cp *.h include/
+```
+
+Nex, create a directory to compile the lib:
+```
+mkdir build
+cd build/
+cmake ..
+make
+```
+libckv.a will be available in build directory
+
 ### Voltron ###
 
-To run the Voltron executable, go to the conproxy dir:  
+To run the Voltron executable, go to the src dir:  
 ```
 $ ./conproxy --config /root/conrun/conf/c1.json --datalets /root/conrun/conf/d1.cfg --shard shard1 --proxyAddr 192.168.0.170 --proxyClientPort 12345 
 ```
