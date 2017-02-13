@@ -129,7 +129,7 @@ This will send requests to conproxy, which will serve as a proxy forwarding requ
 
 ### Deployment ###
 
-To launch zk and kafak on cloud, go to the MQ dir, and run:
+To launch zk and MQ on cloud, run:
 ```
 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 bin/MQ-server-start.sh -daemon config/server.properties
