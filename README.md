@@ -45,7 +45,7 @@ Move the header file generated to the include folder:
 cp *.h include/
 ```
 
-Nex, create a directory to compile the lib:
+Next, create a directory to compile the lib:
 ```
 mkdir build
 cd build/
