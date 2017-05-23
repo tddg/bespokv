@@ -89,7 +89,7 @@ A JSON formatted file specifying all options (num_replicas option might be a bit
 ```
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -154,7 +154,7 @@ $ ./slap.sh docker_runcon
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -164,7 +164,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "cr",
 	"topology": "slave",
@@ -177,7 +177,7 @@ Slave:
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "eventual",
 	"consistency_tech": "cr",
 	"topology": "ms",
@@ -187,7 +187,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "evenual",
 	"consistency_tech": "cr",
 	"topology": "slave",
@@ -200,7 +200,7 @@ Slave:
 Master:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "ms",
@@ -210,7 +210,7 @@ Master:
 Slave:
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "slave",
@@ -220,7 +220,7 @@ Slave:
 -----No topology and without consistency-----
 {
 	"zk_host": "172.17.0.2:2181",
-	"MQ_broker": "172.17.0.3:9092",
+	"kafka_broker": "172.17.0.3:9092",
 	"consistency_model": "without",
 	"consistency_tech": "none",
 	"topology": "no",
@@ -232,7 +232,7 @@ Slave:
 
 {
 	"zk_host": "172.17.0.2:2181",
-	"MQ_broker": "172.17.0.3:9092",
+	"kafka_broker": "172.17.0.3:9092",
 	"consistency_model": "strong",
 	"consistency_tech": "rl",
 	"topology": "aa",
@@ -244,7 +244,7 @@ Slave:
 
 {
 	"zk_host": "192.168.0.173:2181",
-	"MQ_broker": "192.168.0.173:9092",
+	"kafka_broker": "192.168.0.173:9092",
 	"consistency_model": "eventual",
 	"consistency_tech": "cr",
 	"topology": "aa",
