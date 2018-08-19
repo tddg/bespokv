@@ -1,4 +1,4 @@
-# TurnKey - README #
+# BESPOKV - README #
 
 
 ## Dependencies ##
@@ -18,7 +18,7 @@
 
 ## How to compile? ##
 
-### Compile TurnKey ###
+### Compile BESPOKV ###
 
 Go to the src directory, for debugging mode, run 'make'
 
@@ -77,7 +77,7 @@ $ cd apps/ckv
 $ ./conkv -l 192.168.0.170 -p 11111 -t 1 
 ```   
 
-### TurnKey ###
+### BESPOKV ###
 
 To run the Voltron executable, go to the src dir:  
 ```
