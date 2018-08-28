@@ -258,7 +258,7 @@ Slave:
 
 
 Ali Anwar: ali@vt.edu
-```
+
 Yue Cheng: yuecheng@gmu.edu
 
 Support is also available through the github repository
