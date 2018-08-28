@@ -71,7 +71,7 @@ Go to the Redis dir:
 $ ./redis-server --port 12346
 ```   
 
-Under apps/ , we implemented two applications for Voltron. If you want the datalet backend to be a key-value store, type:
+Under apps/ , we implemented two applications for bespoKV. If you want the datalet backend to be a key-value store, type:
 ```
 $ cd apps/ckv
 $ ./conkv -l 192.168.0.170 -p 11111 -t 1 
@@ -79,7 +79,7 @@ $ ./conkv -l 192.168.0.170 -p 11111 -t 1
 
 ### BESPOKV ###
 
-To run the Voltron executable, go to the src dir:  
+To run the bespoKV executable, go to the src dir:  
 ```
 $ ./conproxy --config /root/conrun/conf/c1.json --datalets /root/conrun/conf/d1.cfg --shard shard1 --proxyAddr 192.168.0.170 --proxyClientPort 12345 
 ```
@@ -135,13 +135,13 @@ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 bin/MQ-server-start.sh -daemon config/server.properties
 ```
 
-To launch a cluster of Voltron + conkv nodes, first add the data node info in slap.sh, then run:  
+To launch a cluster of bespoKV + conkv nodes, first add the data node info in slap.sh, then run:  
 ```
 $ cd scripts  
 $ ./slap.sh runckv  
 $ ./slap.sh runcon
 ```
-Docker based Voltron is ==PARTIALLY== supported. To run containerized deployment:  
+Docker based bespoKV is ==PARTIALLY== supported. To run containerized deployment:  
 ```
 $ ./slap.sh docker_runckv
 $ ./slap.sh docker_runcon
